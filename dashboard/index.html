@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+    <script src="libs/addresses.js"></script>
+    <script src="libs/web3.min.js"></script>
+    <script src="libs/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.css">
+</head>
+<body data-spy="scroll" data-target="#main-nav" data-offset="91" onload="pop()">
+<div class="preloader">
+    <div class="preloader_image">
+        <div class="sk-double-bounce">
+            <div class="sk-child sk-double-bounce1"></div>
+            <div class="sk-child sk-double-bounce2"></div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg fixed-top bg-white">
+    <div class="container">
+        <a href="/index.html" class="navbar-brand">
+            <img src="https://rizencoin.com/img/logo4.png" alt="Logo">
+        </a>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main-nav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html#features">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/index.html#roadmap">Roadmap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html#dist">Token</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.html#faqs">FAQ</a>
+                </li>
+
+                <li class="nav-item btn-login">
+                    <a class="nav-link" title="Right after the Sale" href="">Dashboard</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="section-spacing">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"><h2>Staking dashboard</h2></div>
+            
+            
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp">
+                    <div class="overflow-auto">
+               <h3> Wallet:</h3> <span id="wallet_addr"></span>
+                     </div>
+                </div>
+            </div>
+            
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp">
+                 <div class="overflow-auto">
+               <h3>Token Contract:</h3> <span id="contract_addr"></span>
+                </div>
+              </div>
+           </div>
+           
+          
+            <br>
+            <br>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/total_supply.png">
+                    <h3>Total supply</h3>
+                    <p id="total_supply">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/total_stake.png">
+                    <h3>Total staked</h3>
+                    <p id="total_stacked">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/rewards.png">
+                    <h3>Total rewards</h3>
+                    <p id="total_rewards">--</p>
+                </div>
+            </div>
+        </div>
+        <!--        <div class="row account_info">-->
+        <!--            <div class="col-12">-->
+        <!--                <h2>Staking personal info</h2>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div class="row account_info">
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/my-tokens.png">
+                    <h3>My tokens</h3>
+                    <p id="my_tokens">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/my-stakes.png">
+                    <h3>Staked by me</h3>
+                    <p id="my_stakes">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/my-rewards.png">
+                    <h3>My rewards</h3>
+                    <p id="my_rewards">--</p>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4 stake">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/stake.png">
+                    <h3>Stake</h3>
+                    <p>Lock your RZN forever</p>
+                    <br>
+                    <div class="row">
+                        <input id="stake_amount" type="number" class="col-12" placeholder="Amount of tokens">
+                        <button id="stake" class="col-12">send</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/unstake.png">
+                    <h3>Unstake</h3>
+                    <p>Burn your stake forever</p>
+                    <br>
+                    <div class="row">
+                        <input id="unstake_amount" type="number" class="col-12" placeholder="Amount of tokens">
+                        <button id="unstake" class="col-12">unstake</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/withdraw.png">
+                    <h3>Withdraw</h3>
+                    <p>Withdraw your reward anytime</p>
+                    <br>
+                    <div class="row">
+                        <button id="withdraw" class="col-12" style="border-radius: 5px; margin-top: 38px;">get</button>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="col-md-12 col-lg-6">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/withdraw.png">
+                    <h3>Withdraw Weekly</h3>
+                    <div class="row">
+                        <button id="withdraw_weekly" class="col-12" style="border-radius: 5px; margin-top: 38px;">get</button>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+    </div>
+</section>
+<section class="section-spacing inverse-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-12"><h2>Farming dashboard</h2></div>
+	
+            <div class="tabs col-12">
+                <input type="radio" name="tab-btn" id="tab-btn-1" value="0" checked>
+                <label for="tab-btn-1">ETH/RZN(1400%)|7days</label>
+                <input type="radio" name="tab-btn" id="tab-btn-2" value="1">
+               <!-- <label for="tab-btn-2">Farming 2</label>
+                <input type="radio" name="tab-btn" id="tab-btn-3" value="2">
+                <label for="tab-btn-3">Farming 3</label>
+                <input type="radio" name="tab-btn" id="tab-btn-4" value="3">
+                <label for="tab-btn-4">Farming 4</label> -->
+            </div>
+            
+            <div class="col-sm-12 col-md-4 col-lg-12">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+            <center> <a href="farmtutorial.mp4" target="_blank" class="btn btn-default animated fadeInLeft">Farming Tutorial</a></center>
+              </div>
+            </div>
+            
+             <div class="col-sm-12 col-md-4 col-lg-12">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+            <center> <a href="https://app.uniswap.org/#/add/ETH/0xd8c82fbc4d8ed0644a7ec04cf973e84c6153c1d7" target="_blank" class="btn btn-default animated fadeInLeft">Get LP from uniswap</a></center>
+              </div>
+            </div>
+
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/total_supply.png">
+                    <h3>Total LP in farming</h3>
+                    <p id="total_farmed">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/total_stake.png">
+                    <h3>My LP in farming</h3>
+                    <p id="my_farmed">--</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 account_info">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/rewards.png">
+                    <h3>My farmed rewards</h3>
+                    <p id="my_farmed_rewards">--</p>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/farming_duration.png">
+                    <h3>Farming duration</h3>
+                    <p id="farming_duration">--</p>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/finish_date.png">
+                    <h3>Finish date</h3>
+                    <p id="period_finish">--</p>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/reward_per_token.png">
+                    <h3>Reward per LP</h3>
+                    <p id="reward_per_token">--</p>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4 col-lg-12">
+                <div class="bg-white card-item fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/reward_rate.png">
+                    <h3>My LP balance(ETH/RZN)</h3>
+                    <p id="reward_rate">--</p>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="row">
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/approve.png">
+                    <h3>1.Approve</h3>
+                     <p>Approve the LP amount you want to farm</p>
+                    <div class="row">
+                        <input id="approve_amount" type="number" class="col-12" placeholder="Amount of LP">
+                        <button id="approve" class="col-12">approve</button>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/stake.png">
+                    <h3>2.Farm</h3>
+                     <p>Enter the approved LP amount</p>
+                    <div class="row">
+                        <input id="farm_amount" type="number" class="col-12" placeholder="Amount of LP">
+                        <button id="farm" class="col-12">farm</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/unstake.png">
+                    <h3>Unfarm</h3>
+                     <p>You can unfarm your LP anytime</p>
+                    <div class="row">
+                        <input id="unfarm_amount" type="number" class="col-12" placeholder="Amount of LP">
+                        <button id="unfarm" class="col-12">unfarm</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-lg-6 account_info">
+                <div class="bg-white card-item wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <img src="img/withdraw.png">
+                    <h3>Farm Rewards</h3>
+                    <p>You can claim reward anytime</p>
+                    <div class="row">
+                        <button id="farm_rewards" class="col-12" style="border-radius: 5px; margin-top: 38px;">get</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<button class="connect" onclick="connectFunc()" hidden>CONNECT</button>
+<script src="libs/popper.min.js"></script>
+<script src="libs/bootstrap.min.js"></script>
+<script src="libs/bignumber.min.js"></script>
+<script src="libs/sweetalert2010.js"></script>
+<script src="all.min.js"></script>
+</body>
+</html>
